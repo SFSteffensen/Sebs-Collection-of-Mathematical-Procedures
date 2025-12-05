@@ -95,6 +95,7 @@
   $ZZ$ betegner de hele tal, $NN$ betegner de naturlige tal (på DTU: $NN = {1, 2, 3, ...}$, altså *uden* 0).
 ]
 
+
 == Udsagnslogik
 
 #definition(title: [Udsagn (Proposition/Statement)])[
@@ -1186,6 +1187,27 @@
 
   *Talværdier:* $1/2 = 0.5$, $sqrt(2)/2 approx 0.71$, $sqrt(3)/2 approx 0.87$
 ]
+
+
+== Eksponentregler
+
+#align(center)[
+  #figure(caption: [Potensregler / Exponent rules])[
+    #table(
+      columns: 2,
+      align: center,
+      stroke: 0.5pt + gray,
+      fill: (x, y) => if y == 0 { gray.lighten(80%) } else { none },
+      table.header([*Regel*], [*Eksempel*]),
+      [$a^m a^n = a^(m+n)$], [$2^3 2^4 = 2^(7)$],
+      [$(a^m)^n = a^(m n)$], [$ (3^2)^4 = 3^8$],
+      [$(a b)^n = a^n b^n$], [$ (2x)^3 = 8 x^3$],
+      [$a^0 = 1 "for" a != 0 $], [$5^0 = 1$],
+      [$a^(-n) = 1 / a^n$], [$2^(-3) = 1/8$],
+    )
+  ]
+]
+
 
 == CAST-reglen (Fortegn i kvadranter)
 

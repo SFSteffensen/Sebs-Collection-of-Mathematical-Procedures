@@ -95,7 +95,6 @@
   $ZZ$ betegner de hele tal, $NN$ betegner de naturlige tal (på DTU: $NN = {1, 2, 3, ...}$, altså *uden* 0).
 ]
 
-
 == Udsagnslogik
 
 #definition(title: [Udsagn (Proposition/Statement)])[
@@ -1188,7 +1187,6 @@
   *Talværdier:* $1/2 = 0.5$, $sqrt(2)/2 approx 0.71$, $sqrt(3)/2 approx 0.87$
 ]
 
-
 == Eksponentregler
 
 #align(center)[
@@ -1199,15 +1197,19 @@
       stroke: 0.5pt + gray,
       fill: (x, y) => if y == 0 { gray.lighten(80%) } else { none },
       table.header([*Regel*], [*Eksempel*]),
-      [$a^m a^n = a^(m+n)$], [$2^3 2^4 = 2^(7)$],
-      [$(a^m)^n = a^(m n)$], [$ (3^2)^4 = 3^8$],
-      [$(a b)^n = a^n b^n$], [$ (2x)^3 = 8 x^3$],
-      [$a^0 = 1 "for" a != 0 $], [$5^0 = 1$],
-      [$a^(-n) = 1 / a^n$], [$2^(-3) = 1/8$],
+      [$a^m a^n = a^(m+n)$],
+      [$2^3 2^4 = 2^(7)$],
+      [$(a^m)^n = a^(m n)$],
+      [$ (3^2)^4 = 3^8$],
+      [$(a b)^n = a^n b^n$],
+      [$ (2x)^3 = 8 x^3$],
+      [$a^0 = 1 "for" a != 0 $],
+      [$5^0 = 1$],
+      [$a^(-n) = 1 / a^n$],
+      [$2^(-3) = 1/8$],
     )
   ]
 ]
-
 
 == CAST-reglen (Fortegn i kvadranter)
 
@@ -4767,3 +4769,419 @@ Afbildningsmatrix: $amat(L, beta, beta) = mat(1, 1, 1, 1;0, 1, 1, 1;0, 0, 1, 1;0
 == Polynomiumsdivision
 - Husk parenteser ved subtraktion: $(a Z^2 + b Z) - (c Z^2 + d Z) = (a-c)Z^2 + (b-d)Z$
 - Komplekse rødder kommer i konjugerede par (for reelle koefficienter)
+
+= Multiple Choice Exam Solutions — Work Backwards Strategies
+
+== E23 MC Solutions
+
+=== Q1: Determinant of Matrix Product
+
+*Question:* $bold(A) = mat(2, -1, 3;1, 3, 0;0, 7, -2)$, $bold(B) = mat(1, 0, 0;0, 2, 0;0, 0, 3)$. Find $det(bold(A) dot bold(B))$.
+
+#note-box[
+  *Strategy:* $bold(B)$ is diagonal, so $det(bold(B)) = 1 dot 2 dot 3 = 6$
+
+  Use $det(bold(A) dot bold(B)) = det(bold(A)) dot det(bold(B))$
+
+  For $det(bold(A))$: Expand along row 1 or use cofactors.
+  $det(bold(A)) = 2 mat(3, 0;7, -2) - (-1) mat(1, 0;0, -2) + 3 mat(1, 3;0, 7)$
+  $= 2(-6) + 1(-2) + 3(7) = -12 - 2 + 21 = 7$
+
+  $det(bold(A) dot bold(B)) = 7 dot 6 = 42$
+
+  *Answer:* $bold(42)$ (check if negative in options)
+]
+
+=== Q2: Solve 2×2 System
+
+*Question:* $bold(A) = mat(1, -1;0, 2)$, $bold(b) = vec(4, 12)$. Solve $bold(A) bold(x) = bold(b)$.
+
+#note-box[
+  *Work Backwards Strategy:* Test each answer by computing $bold(A) bold(x)$.
+
+  *Quick method:* From second row: $2x_2 = 12 => x_2 = 6$
+
+  Eliminate answers without $x_2 = 6$.
+
+  From first row: $x_1 - x_2 = 4 => x_1 = 4 + 6 = 10$
+
+  *Answer:* $bold(x) = vec(10, 6)$
+]
+
+=== Q3: Discriminant and Root
+
+*Question:* $p(z) = 3z^2 - 6z + 6$. Find discriminant $d$ and one root $r$.
+
+#note-box[
+  *Direct calculation:*
+  $d = b^2 - 4a c = 36 - 72 = -36$ (complex roots)
+
+  $z = (6 plus.minus sqrt(-36))/6 = (6 plus.minus 6i)/6 = 1 plus.minus i$
+
+  *Work backwards:* If answer claims $r = 1 - i$, verify: $p(1-i) = 3(1-i)^2 - 6(1-i) + 6$
+  $(1-i)^2 = 1 - 2i - 1 = -2i$
+  $p(1-i) = 3(-2i) - 6 + 6i + 6 = -6i + 6i = 0$ ✓
+
+  *Answer:* $bold(d) = -36, r = 1 - i$
+]
+
+=== Q4: Particular Solution to ODE
+
+*Question:* $f'(t) = f(t) + t$, $t > 0$. Which is a particular solution?
+
+#note-box[
+  *Test strategy:* Compute $f'(t)$ for each option and check if $f'(t) = f(t) + t$.
+
+  Option: $f(t) = t^2 - 1$
+  - $f'(t) = 2t$
+  - $f(t) + t = t^2 - 1 + t$
+  - Check: $2t eq.not t^2 - 1 + t$ (unless specific $t$)
+
+  Option: $f(t) = t^2$
+  - $f'(t) = 2t$
+  - $f(t) + t = t^2 + t$
+  - Check: $2t eq.not t^2 + t$ ✗
+
+  *Gæt-metode:* For $f' = f + t$, try $f = c e^t + "polynomial"$
+
+  Try $f(t) = c e^t + t^2 - 1$:
+  $f'(t) = c e^t + 2t$
+  $f(t) + t = c e^t + t^2 - 1 + t$
+  Match coefficients → works for specific $c$.
+
+  *Verify systematically through options.*
+]
+
+=== Q5: Which is NOT a Solution?
+
+*Question:* $f''(t) - 6f'(t) + 9f(t) = 0$. Which is NOT a solution?
+
+#note-box[
+  *Characteristic equation:* $lambda^2 - 6lambda + 9 = 0$
+  $(lambda - 3)^2 = 0$ → dobbeltrod $lambda = 3$
+
+  *General solution:* $f(t) = (c_1 + c_2 t) e^(3t)$
+
+  *Work backwards:* Check which option does NOT fit this form.
+
+  - $f(t) = 0$ ✓ (trivial solution)
+  - $f(t) = t e^(3t)$ ✓ (fits form)
+  - $f(t) = 4e^(3t)$ ✓ (fits form)
+  - $f(t) = e^(3t)(t-1)$ ✓ (fits form)
+  - $f(t) = cos(3t) + sin(3t)$ ✗ (trigonometric, NOT exponential!)
+
+  *Answer:* $bold(cos(3t) + sin(3t))$ — wrong form entirely
+]
+
+=== Q6: Eigenvectors for Matrix
+
+*Question:* $bold(A) = mat(2, 3, 5;0, 0, -2;0, -2, 0)$. Which are eigenvectors?
+
+#note-box[
+  *Work backwards:* Test $bold(A) bold(v)$ for each option, check if result = $lambda bold(v)$.
+
+  For $bold(v)_1 = vec(1, 0, 0)$:
+  $bold(A) vec(1, 0, 0) = vec(2, 0, 0) = 2 vec(1, 0, 0)$ ✓ (eigenvalue 2)
+
+  For $bold(v)_2 = vec(3, 1, 1)$:
+  $bold(A) vec(3, 1, 1) = vec(6+3+5, 0-2, 0-2) = vec(14, -2, -2)$
+  Check: $vec(14, -2, -2) = lambda vec(3, 1, 1)$?
+  $14 = 3lambda => lambda = 14/3$, but $-2 = lambda => lambda = -2$ ✗ (contradiction)
+
+  *Answer:* Test systematically — look for consistent $lambda$ across all components.
+]
+
+=== Q7: Find Matrix from Eigendata
+
+*Question:* Given eigenvalues and eigenspaces, find $bold(A)$.
+
+#note-box[
+  *Strategy:* Use $bold(A) = bold(P) bold(D) bold(P)^(-1)$ where:
+  - $bold(D) = mat(lambda_1, 0, 0;0, lambda_2, 0;0, 0, lambda_3)$
+  - $bold(P)$ has eigenvectors as columns
+
+  *Work backwards:* Test if $bold(A) bold(v)_i = lambda_i bold(v)_i$ for given eigenvectors.
+
+  For each option, multiply the matrix by the first eigenvector and check if you get $lambda_1$ times that vector.
+
+  *Faster:* Check specific entries. If eigenspace info gives constraints (e.g., $a_(1,1) = $ something specific), eliminate wrong answers immediately.
+]
+
+== E24 MC Solutions
+
+=== Q1: Solve Quadratic in Polar Form
+
+*Question:* $3z^2 - 6z + 12 = 0$. Find solution in polar form.
+
+#note-box[
+  *Solve:* $z = (6 plus.minus sqrt(36-144))/6 = (6 plus.minus sqrt(-108))/6 = 1 plus.minus sqrt(3) i$
+
+  *Convert $z = 1 + sqrt(3) i$ to polar:*
+  - $|z| = sqrt(1 + 3) = 2$
+  - $arg(z) = arctan(sqrt(3)/1) = pi/3$ (quadrant I)
+
+  $z = 2e^(i pi/3)$
+
+  *Work backwards:* Test $z = 2e^(i pi/3)$ in original equation:
+  $(2e^(i pi/3))^2 = 4e^(i 2pi/3) = 4(-1/2 + i sqrt(3)/2) = -2 + 2sqrt(3) i$
+
+  (Full verification tedious — trust conversion)
+
+  *Answer:* $bold(z = 2e^(plus.minus i pi/3))$
+
+  *Eliminate wrong answers:*
+  - $z = 3e^(i pi/3)$ → wrong modulus (too large)
+  - $z = 2e^(pi i)$ → this is $-2$, real (wrong)
+]
+
+=== Q3: Recursive Function
+
+*Question:* $f(n) = cases(1 "for" n=1, 2 "for" n=2, 3f(n-1) - f(n-2) "for" n >= 3)$. Find $f(5)$.
+
+#note-box[
+  *Compute iteratively:*
+  - $f(1) = 1$
+  - $f(2) = 2$
+  - $f(3) = 3(2) - 1 = 5$
+  - $f(4) = 3(5) - 2 = 13$
+  - $f(5) = 3(13) - 5 = 34$
+
+  *Answer:* $bold(34)$
+
+  *MC strategy:* If very large or very small values appear, they're likely wrong (expect moderate growth).
+]
+
+=== Q6: Which is NOT an Eigenvector?
+
+*Question:* $bold(A) = mat(-1, 4, 4;0, 7, 8;0, -4, -5)$. Which is NOT an eigenvector?
+
+#note-box[
+  *Work backwards:* For each vector $bold(v)$, compute $bold(A) bold(v)$ and check if $bold(A) bold(v) = lambda bold(v)$.
+
+  For $bold(v) = vec(3, -1, 1)$:
+  $bold(A) vec(3, -1, 1) = vec(-3-4+4, 0-7+8, 0+4-5) = vec(-3, 1, -1)$
+
+  Check: $vec(-3, 1, -1) = lambda vec(3, -1, 1)$?
+  From first component: $-3 = 3lambda => lambda = -1$
+  From second: $1 = -lambda => lambda = -1$ ✓
+  From third: $-1 = lambda => lambda = -1$ ✓
+
+  This IS an eigenvector (λ = -1).
+
+  Continue testing until one fails the consistency check.
+
+  *Answer:* The vector where components give different $lambda$ values.
+]
+
+=== Q7: Determinant Expression
+
+*Question:* $bold(A) in CC^(4 times 4)$. Find $det((bold(A)^T + bold(A)^2) dot bold(A)^(-1))$.
+
+#note-box[
+  *WARNING:* Cannot use $det(bold(X) + bold(Y)) = det(bold(X)) + det(bold(Y))$ — this is FALSE!
+
+  *Strategy:* Must compute explicitly or find pattern.
+
+  *Partial approach:*
+  $det((bold(A)^T + bold(A)^2) dot bold(A)^(-1))$
+
+  If given specific $bold(A)$, compute:
+  1. $bold(A)^T + bold(A)^2$
+  2. Multiply by $bold(A)^(-1)$
+  3. Take determinant
+
+  *In MC:* Likely need actual calculation. Check for special structure (symmetric, etc.).
+]
+
+=== Q8: System of Linear Equations
+
+*Question:* $x_1 + x_2 + 3x_3 + x_4 = 7$, $-x_1 + x_3 = -5$
+
+#note-box[
+  *Work backwards:* Test each option by seeing if it satisfies both equations.
+
+  From equation 2: $x_1 = x_3 + 5$
+
+  Substitute into equation 1:
+  $(x_3 + 5) + x_2 + 3x_3 + x_4 = 7$
+  $x_2 + 4x_3 + x_4 = 2$
+
+  *Free variables:* $x_2, x_4$ (two free variables)
+
+  *Particular solution:* Set $x_2 = x_4 = 0$:
+  $4x_3 = 2 => x_3 = 1/2$, $x_1 = 1/2 + 5 = 11/2$
+
+  But answer shows $x_1 = 5$, $x_3 = 0$ as particular solution.
+  Check: $-5 + 0 = -5$ ✓
+  $5 + x_2 + 0 + x_4 = 7 => x_2 + x_4 = 2$
+
+  *Full solution form:*
+  $vec(x_1, x_2, x_3, x_4) = vec(5, 2, 0, 0) + t_1 vec(?, ?, ?, ?) + t_2 vec(?, ?, ?, ?)$
+
+  *Eliminate:* Solutions with wrong number of parameters (should be 2).
+
+  *Verify:* Plug option into both equations.
+]
+
+== omF24 MC Solutions
+
+=== Q1: Span R³
+
+*Question:* Given $bold(v)_1 = vec(3, -1, 2)$, $bold(v)_2 = vec(1, 1, -2)$. Which vector makes them span $RR^3$?
+
+#note-box[
+  *Strategy:* Need three linearly independent vectors.
+
+  *Work backwards:* Form matrix $[bold(v)_1 | bold(v)_2 | bold(v)_"test"]$ and check if $det eq.not 0$.
+
+  For $bold(v)_3 = vec(1, 2, 3)$:
+  $det mat(3, 1, 1;-1, 1, 2;2, -2, 3)$
+
+  Expand along row 1:
+  $= 3 mat(1, 2;-2, 3) - 1 mat(-1, 2;2, 3) + 1 mat(-1, 1;2, -2)$
+  $= 3(3+4) - 1(-3-4) + 1(2-2) = 21 + 7 + 0 = 28 eq.not 0$ ✓
+
+  *Eliminate:* Any vector that's a linear combination of $bold(v)_1, bold(v)_2$ (check if proportional or in their plane).
+
+  For instance, $vec(0, -4, 8) = -4 vec(0, 1, -2)$ — but this isn't in the span of the two given vectors, so check it.
+]
+
+=== Q2: Matrix Equation
+
+*Question:* $bold(A) dot bold(B) = bold(C)$ where $bold(A) = mat(1, 2;0, -2)$, $bold(C) = mat(4, -4;-4, 6)$. Find $bold(B)$.
+
+#note-box[
+  *Solution:* $bold(B) = bold(A)^(-1) bold(C)$
+
+  *Find inverse:*
+  $bold(A)^(-1) = 1/(1 dot (-2) - 2 dot 0) mat(-2, -2;0, 1) = (-1/2) mat(-2, -2;0, 1) = mat(1, 1;0, -1/2)$
+
+  Wait, check: $det = -2$, so $bold(A)^(-1) = (-1/2) mat(-2, -2;0, 1) = mat(1, 1;0, -1/2)$
+
+  Actually: $bold(A)^(-1) = 1/(-2) mat(-2, -2;0, 1) = mat(1, 1;0, -1/2)$
+
+  $bold(B) = mat(1, 1;0, -1/2) mat(4, -4;-4, 6) = mat(0, 2;2, -3)$
+
+  *Work backwards:* Test each option: compute $bold(A) dot bold(B)$ and check if it equals $bold(C)$.
+
+  For $bold(B) = mat(0, 2;2, -3)$:
+  $mat(1, 2;0, -2) mat(0, 2;2, -3) = mat(0+4, 2-6;0-4, 0+6) = mat(4, -4;-4, 6)$ ✓
+]
+
+=== Q3: Determinant = 0
+
+*Question:* $bold(A) = mat(1, -1, 2;k, 0, 3;-2, 1, 0)$. For which $k$ is $det(bold(A)) = 0$?
+
+#note-box[
+  *Compute determinant:*
+  Expand along row 2 (has zero):
+  $det = -k mat(-1, 2;1, 0) + 0 - 3 mat(1, -1;-2, 1)$
+  $= -k(0-2) - 3(1-2) = 2k - 3(-1) = 2k + 3$
+
+  Set equal to zero: $2k + 3 = 0 => k = -3/2$
+
+  *Answer:* $bold(k = -3/2)$
+
+  *Work backwards:* Plug each answer into the determinant formula and check if result is 0.
+]
+
+=== Q4: Find Polynomial from Root
+
+*Question:* $p(z) = a z^2 - b z + c$ with real coefficients. Root $z_0 = 1 - 2i$, $p(0) = 10$. Find $p$.
+
+#note-box[
+  *Key:* Complex roots come in conjugate pairs.
+  Roots: $1 - 2i$ and $1 + 2i$
+
+  $(z - (1-2i))(z - (1+2i)) = z^2 - 2z + (1+4) = z^2 - 2z + 5$
+
+  So $p(z) = a(z^2 - 2z + 5)$
+
+  From $p(0) = 10$: $a(5) = 10 => a = 2$
+
+  $p(z) = 2z^2 - 4z + 10$
+
+  *Work backwards:* Test each option:
+  - Check if $p(1-2i) = 0$
+  - Check if $p(0) = 10$
+
+  For $p(z) = 2z^2 - 4z + 10$:
+  $p(0) = 10$ ✓
+  $p(1-2i) = 2(1-2i)^2 - 4(1-2i) + 10$
+  $(1-2i)^2 = 1 - 4i - 4 = -3 - 4i$
+  $= 2(-3-4i) - 4 + 8i + 10 = -6 - 8i - 4 + 8i + 10 = 0$ ✓
+]
+
+=== Q5: Matrix Multiplication
+
+*Question:* $bold(A) = mat(2, -1, 3;5, 0, -2)$, $bold(b) = vec(-2, -1, 3)$. Find $bold(A) dot bold(b)$.
+
+#note-box[
+  *Direct computation:*
+  $bold(A) bold(b) = vec(2(-2) + (-1)(-1) + 3(3), 5(-2) + 0(-1) + (-2)(3))$
+  $= vec(-4 + 1 + 9, -10 + 0 - 6) = vec(6, -16)$
+
+  *Work backwards:* Given answer options, just verify by reversing.
+
+  If not sure of sign: check dimension (should be $2 times 1$).
+
+  *Answer:* $bold(vec(6, -16))$
+]
+
+=== Q6: Eigenvalue from Solution
+
+*Question:* ODE system $bold(f)' = bold(A) bold(f)$ with solution $bold(f)(t) = k_1 vec(2, 5) e^(-2t) + k_2 vec(-1, 1) e^(-t)$.
+
+#note-box[
+  *From solution form:*
+  - $vec(2, 5)$ is eigenvector with eigenvalue $-2$
+  - $vec(-1, 1)$ is eigenvector with eigenvalue $-1$
+
+  *Check answers:* Look for λ = -2 with v = (2,5) or λ = -1 with v = (-1,1).
+
+  Watch for sign errors or swapped components.
+
+  *Answer:* Depends on exact options, but eigenvalue-eigenvector pairs must match the exponential terms.
+]
+
+=== Q7: Kernel of Linear Map
+
+*Question:* $bold(A) = mat(1, 2, 1;-1, 2, 1;0, 8, 4)$. Find $ker(L_A)$.
+
+#note-box[
+  *Solve* $bold(A) bold(x) = bold(0)$:
+
+  Row reduce:
+  $mat(1, 2, 1;-1, 2, 1;0, 8, 4) arrow.long mat(1, 2, 1;0, 4, 2;0, 8, 4) arrow.long mat(1, 2, 1;0, 1, 1/2;0, 0, 0)$
+
+  From RREF: $x_1 + 2x_2 + x_3 = 0$ and $x_2 + (1/2)x_3 = 0$
+
+  Free variable: $x_3 = t$
+  $x_2 = -(1/2)t$
+  $x_1 = -2(-(1/2)t) - t = t - t = 0$
+
+  Hmm, let me recalculate...
+
+  *Work backwards:* For each option, compute $bold(A) bold(v)$ and check if result is $bold(0)$.
+
+  For $bold(v) = vec(0, -1, 2)$:
+  $bold(A) vec(0, -1, 2) = vec(0-2+2, 0-2+2, 0-8+8) = vec(0, 0, 0)$ ✓
+
+  This confirms the kernel.
+]
+
+#math-hint()[
+  *General MC Strategy:*
+
+  1. *Check dimensions* — eliminate answers that don't make sense
+  2. *Test simple cases* — plug in 0, 1, or special values
+  3. *Verify one component* — if first component wrong, skip that answer
+  4. *Use structure* — diagonal, triangular, symmetric matrices have shortcuts
+  5. *Time management* — if calculation is long, test answers instead
+
+  *For eigenproblems:* Test $bold(A) bold(v) = lambda bold(v)$ directly
+
+  *For ODE:* Compute $f'(t)$ and verify it satisfies the equation
+
+  *For determinants:* Use properties before computing
+]
